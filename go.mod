@@ -1,4 +1,4 @@
-module tg_bot_ozon
+module github.com/CRPNTRPINK/telegram_bot_go_practice
 
 go 1.21rc2
 
