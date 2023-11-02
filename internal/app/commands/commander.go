@@ -17,7 +17,7 @@ func NewCommander(bot *tgbotapi.BotAPI, productService *product.Service) *Comman
 }
 
 func (c *Commander) HandleUpdate(update tgbotapi.Update) {
-	if update.Message == nil { // If we got a message
+	if update.Message == nil { // If we didn't get a message
 		return
 	}
 	command, ok := registeredCommands[update.Message.Command()]
