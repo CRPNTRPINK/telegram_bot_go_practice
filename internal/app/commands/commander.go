@@ -5,8 +5,6 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-var registeredCommands = map[string]func(c *Commander, msg *tgbotapi.Message){}
-
 type Commander struct {
 	bot            *tgbotapi.BotAPI
 	productService *product.Service
@@ -20,10 +18,14 @@ func (c *Commander) HandleUpdate(update tgbotapi.Update) {
 	if update.Message == nil { // If we didn't get a message
 		return
 	}
-	command, ok := registeredCommands[update.Message.Command()]
-	if ok {
-		command(c, update.Message)
-	} else {
+	switch update.Message.Command() {
+	case "help":
+		c.Help(update.Message)
+	case "list":
+		c.List(update.Message)
+	case "get":
+		c.Get(update.Message)
+	default:
 		c.Default(update.Message)
 	}
 }
