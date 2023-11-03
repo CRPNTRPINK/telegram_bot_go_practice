@@ -44,6 +44,8 @@ func (c *Commander) HandleUpdate(update tgbotapi.Update) {
 			c.List(update.Message)
 		case "get":
 			c.Get(update.Message)
+		case "set":
+			c.Set(update.Message)
 		default:
 			c.Default(update.Message)
 		}

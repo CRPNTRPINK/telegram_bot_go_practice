@@ -23,3 +23,7 @@ func (s *Service) Get(idx int) (*Product, error) {
 
 	return &allProducts[idx], nil
 }
+
+func (s *Service) Set(value string) {
+	allProducts = append(allProducts, NewProduct(value))
+}

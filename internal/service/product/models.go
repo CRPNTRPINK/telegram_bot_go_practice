@@ -11,3 +11,7 @@ var allProducts = []Product{
 type Product struct {
 	Title string
 }
+
+func NewProduct(title string) Product {
+	return Product{title}
+}
